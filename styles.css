@@ -1,0 +1,186 @@
+
+html{
+    box-sizing: border-box;
+  }
+  
+  body{
+    background: url('6.jpg') repeat;
+  }
+  
+  .slider-container{
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+  }
+  
+  .slider-radio-button{
+    width: 0;
+    margin: 0;
+  }
+  
+  .slider-view{
+    margin-top: 2rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "slider-imgs slider-imgs"
+                          "slider-captions slider-controls";
+    width: 100vw;
+    max-width: 43rem;
+    overflow: hidden;
+  }
+  
+  .slider-imgs{
+    display: flex;
+    grid-area: slider-imgs;
+    background-size: cover;
+  }
+  
+  .slider-img{
+    width: 100%;
+  }
+  
+  .slider-captions{
+    grid-area: slider-captions;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    font-size: 1.55rem;
+  }
+  
+  .caption{
+    opacity: 0;
+    min-width: 30rem;
+    font-family: 'Anton', sans-serif;
+    color: white;
+    letter-spacing: 0.1rem;
+  }
+  
+  .slider-controls{
+    display: flex;
+    gap: 0.3rem;
+    justify-content: flex-end;
+    grid-area: slider-controls;
+  }
+  
+  .slider-controls-click-area{
+    display: flex;
+    cursor: pointer;
+    padding: 0.8rem;
+  }
+  
+  .slider-controls-click-area:hover .slider-controls-circle:active{
+    border: 0.1rem solid  slategray;
+    background-color: slategray
+  }
+  
+  .slider-controls-click-area:hover > .slider-controls-circle{
+    border: 0.1rem solid white;
+    background-color: white;
+  }
+  
+  .slider-controls-circle{
+    display: block;
+    border-radius: 50%;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 0.1rem solid rgb(255, 255, 255);
+    background-color: rgb(255, 0, 234)
+  }
+  
+  .slider-controls-circle:hover{
+    border: 0.1rem solid white;
+    background-color: white;
+  }
+  
+  #slide-1-radio:checked ~ .slider-view .slider-imgs #slide-1-img,
+  #slide-2-radio:checked ~ .slider-view .slider-imgs #slide-2-img,
+  #slide-3-radio:checked ~ .slider-view .slider-imgs #slide-3-img,
+  #slide-4-radio:checked ~ .slider-view .slider-imgs #slide-4-img,
+  #slide-5-radio:checked ~ .slider-view .slider-imgs #slide-5-img
+  {
+    order: -1;
+    animation: slide-animation;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  #slide-1-radio:checked ~ .slider-view .slider-captions #slide-1-caption,
+  #slide-2-radio:checked ~ .slider-view .slider-captions #slide-2-caption,
+  #slide-3-radio:checked ~ .slider-view .slider-captions #slide-3-caption,
+  #slide-4-radio:checked ~ .slider-view .slider-captions #slide-4-caption,
+  #slide-5-radio:checked ~ .slider-view .slider-captions #slide-5-caption
+  {
+    order: -1;
+    animation: caption-animation;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  #slide-1-radio:checked ~ .slider-view .slider-controls #slide-1-circle .slider-controls-circle,
+  #slide-2-radio:checked ~ .slider-view .slider-controls #slide-2-circle .slider-controls-circle,
+  #slide-3-radio:checked ~ .slider-view .slider-controls #slide-3-circle .slider-controls-circle,
+  #slide-4-radio:checked ~ .slider-view .slider-controls #slide-4-circle .slider-controls-circle,
+  #slide-5-radio:checked ~ .slider-view .slider-controls #slide-5-circle .slider-controls-circle
+  {
+    background-color: transparent;
+  }
+  
+  #slide-0-radio:checked ~ .slider-view .slider-imgs #slide-1-img{
+    order: -1;
+  }
+  
+  #slide-0-radio:checked ~ .slider-view .slider-controls #slide-1-circle .slider-controls-circle {
+    background-color: transparent;
+  }
+  
+  #slide-0-radio:checked ~ .slider-view .slider-captions #slide-1-caption{
+    order: -1;
+    opacity: 1;
+  }
+  
+  @keyframes slide-animation {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes caption-animation {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    70% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @media (max-width: 48rem) {
+  
+    .slider-view{
+      margin-top: 1rem;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+      grid-template-areas: "slider-imgs"
+                            "slider-controls"
+                            "slider-captions";
+  
+    }
+  
+    .slider-controls {
+      justify-content: center;
+    }
+  
+    .slider-captions{
+      font-size: 1rem;
+    }
+  }
