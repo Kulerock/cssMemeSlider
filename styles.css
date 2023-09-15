@@ -38,6 +38,7 @@ html{
   
   .slider-img{
     width: 100%;
+    border-radius: 10%;
   }
   
   .slider-captions{
@@ -85,7 +86,7 @@ html{
     width: 0.8rem;
     height: 0.8rem;
     border: 0.1rem solid rgb(255, 255, 255);
-    background-color: rgb(255, 0, 234)
+    background-color: rgb(255, 153, 0)
   }
   
   .slider-controls-circle:hover{
